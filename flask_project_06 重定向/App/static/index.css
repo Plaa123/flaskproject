@@ -1,0 +1,4 @@
+h4 {
+    color:var(--fgColor-default);
+    font-size:var(--text-body-size-medium);
+}
