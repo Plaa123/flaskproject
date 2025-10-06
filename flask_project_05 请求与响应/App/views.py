@@ -1,6 +1,6 @@
 # views.py 路由+ 视图函数
 
-from flask import Blueprint, request
+from flask import Blueprint, request, render_template, jsonify, make_response, Response
 from .models import *
 # 蓝图
 blue = Blueprint('user',__name__)
@@ -38,6 +38,7 @@ def hello():
 # 获取指定key 对应的所有值：dict.getlist('uname')
 
 
+
 @blue.route('/request/',methods=['GET','POST'])
 def get_request():
     pass
@@ -70,3 +71,31 @@ def get_request():
 
 
     return "request ok!"
+
+
+# response : 服务器端向客户端发送的响应
+@blue.route('/response/')
+def get_response():
+    pass
+    # 响应的几种方式
+    #1、返回字符串（不常用）
+    # return 'response ok!'
+
+    # 2.模板渲染（前后端不分离）
+    # return render_template('index.html',name= '张三',age = 20)
+
+    # 3.返回json数据（前后端分离）
+    # data = {'name':'李四','age':'23'}
+    # # jsonify():序列化 ，字典--》字符串
+    # return jsonify(data)
+
+
+    # 4.自定义response对象
+    html = render_template('index.html'
+                           ,name='张三',
+                            age=22) # 将参数嵌套到html 模板中
+    print(html,type(html))
+    # res = make_response(html,200)
+    res = Response(html)
+    print(res)
+    return res
