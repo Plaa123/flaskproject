@@ -46,11 +46,11 @@ def hello():
 #     return 'path:{}'.format(url)
 
 # uuid:
-# @blue.route('/uuid/<uuid:id>')
-# def get_uuid(id):
-#     print(type(id))
-#     return str(id)
-#
+@blue.route('/uuid/<uuid:id>')
+def get_uuid(id):
+    print(type(id))
+    return str(id)
+
 @blue.route('/getuuid/')
 def get_uuid2():
     import uuid
